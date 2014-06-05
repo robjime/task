@@ -1,0 +1,16 @@
+curl commands:
+
+#create a user
+curl -H "Content-Type: application/json" -d '{"user":{"email": "user@website.com", "password": "password"}}' -X POST http://localhost:3000/users
+
+#sign in a user
+curl -H 'Content-Type: application/json'   -H 'Accept: application/json' -X POST http://localhost:3000/users/sign_in   -d '{"user": {"email": "user@website.com", "password": "password"}, "client": {"client_token": "NiqLpZaYAiPJiP2PNHRs"}}'
+
+#create an event
+curl -i -H "Accept: application/json" -H "Content-type: application/json" -X POST -d '{"user": {"email": "user@website.com"}, "authentication_token": "PUT AUTH TOKEN HERE", "event": {"name":"My Event 1" } }' http://localhost:3000/appdata/events/new
+
+#list a users events
+curl -H 'Content-Type: application/json'   -H 'Accept: application/json' -X GET http://localhost:3000/appdata/events   -d '{"user": {"email": "user@website.com"}, "authentication_token": "PUT AUTH TOKEN HERE"}'
+
+#sign out a user
+curl -H 'Content-Type: application/json'   -H 'Accept: application/json' -X DELETE http://localhost:3000/users/sign_out -d '{"user": {"email": "user@website.com"}, "authentication_token": "PUT AUTH TOKEN HERE"}'
